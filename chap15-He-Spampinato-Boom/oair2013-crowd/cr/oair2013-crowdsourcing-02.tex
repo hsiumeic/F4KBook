@@ -1,0 +1,230 @@
+\section{Related work}
+\label{sec:rel}
+%Collecting ground truth data for video-based retrieval and computer vision 
+%research is typically a time consuming task done by humans using dedicated 
+%tools such as those presented in \cite{Giro2012:multi, Moeh2012:effe}. 
+%%Examples of crowdsourcing such ground truth collection in order to obtain larger 
+%%scale datasets include  \cite{Russell08:Label} 
+%%for image and video labelling or \cite{Hoss12:aggr} for INEX document/topic relevance assessments.
+%Crowd-sourcing as a newly emerged colleborative problem solving strategy has received much attention
+%in research communities.
+%%
+%In particular, within the computer vision and IR community, where large scale ground truth data are needed, 
+%the wisdom of the crowd was shown to provide effective solutions in a wide range
+%of problems, ranging from image/video annotation~\cite{Russell08:Label, Yuen09:Label, ahnl:04, ahnl06:impr, 
+%ahnl06:peekaboom, Chen:2011:LFA}, to text annotation~\cite{AMBATI10.244, Finin:2010:ANE} and search result 
+%assessments~\cite{eickhoff12:qual, Hoss12:aggr, kazai:overview11}.
+
+Much research in crowd-sourcing has been focused on the design of Human Intelligence 
+Tasks (HITs)~\cite{ahnl:04, anhl06:impr, ahnl06:peekaboom, eickhoff12:qual, Kazai09onthe, Kazai11crowd}. 
+%which includes aspects such as incentives, fesibility and quality control.
+Indeed, in order to generate useful results, the designed task should
+make workers~\emph{want to} as well as~\emph{able to} generate outputs.
+%and is capable to control over the quality of the submitted jobs.
+
+%Tasks such as image/video annotations or relevance assessments are
+%in general tedious work. 
+In order to solve the \emph{want to} problem, incentive is the key.
+%is an important aspect of the task design.
+A commonly used incentive is money, with advantages such as  
+being universal, easy to measure and flexible to be adjusted
+for balancing cost-profit~\cite{Horton:2010}. 
+%
+An important alternative is entertainment, i.e., the 
+so-called game with a purpose~\cite{ahnl08:desi}. 
+%
+A prime example of gamifying an annotation task is Luis von Ahn's ESP 
+game \cite{ahnl:04}. 
+%They posit that if the labeling game is entertaining enough so that 
+%people would play it as often as other online games, 
+%most of the Web images can be labelled by the players within a few months.
+%
+Within the image annotation context, similar games include Phetch~\cite{anhl06:impr}, 
+an online game that annotates images with explanatory text, Peekaboom~\cite{ahnl06:peekaboom}
+that locates objects in images. 
+%
+Different from our task, these games all target at general image annotation problems
+that do not require expert knowledge in specific domains.
+%
+Recently, \citet{eickhoff12:qual} showed quantitative and qualitative advantages of 
+using their GeAnn game to collect relevance assessments for search results. %TREC document/topic pairs.
+%
+%They demonstrated the generalisability of their game approach that it can be easily-transformed
+%solve to a image matching problem.
+%by developing a version for image from our project.  
+In this paper, we test the quality of data collected by a game that was inspired by GeAnn
+under a controlled experimental setup.
+
+
+
+While most of the studies so far focuses on the~\emph{want to} problem, 
+our primary focus is on the~\emph{able to} problem.
+%
+A smart way of presenting a problem %or decomposing a complicated problem into simpler sub-problems 
+may greatly reduce its difficulty and makes an infeasible task become feasible. 
+For example,  Foldit\cite{cooper2010:pred}
+uses a puzzle solving game for protein structure prediction.
+Their results show that it is possible to use non-experts to solve complicated
+scientific problems.
+Another example is Galaxy zoo~\cite{website:Galaxyzoo}, where citizens' wisdom
+contributes to morphological classification of galaxies.
+%
+Similar to these problems, we aim to tackle an image recognition  
+task that requires extensive expert knowledge in marine biology with laymen's contributions. 
+%our task of species recognition for fish images is not trivial even for marine biologists. 
+%
+%We convert this problem to an image matching game and hypothesize that the expert  
+%recognition task can be solved simply by visual similarity assessment, and conduct a user 
+%study to examine whether this strategy leads to a promising solution.
+%
+
+%\todo{About expert vs. non-expert, say that we are addressing a different problem, refer to comparison table of expert-non-expert actives}
+%\todo{
+%discuss crowdMM workshop '12~\cite{chen2012acm}
+%discuss conditioning of users with a database schema~\cite{theodosiou2011evaluating}
+%discuss impact of social tagging on Flickr tag recommendation~\cite{sigurbjornsson2008flickr}
+%discuss tag agreement of users in taggin museum art collections~\cite{trant2006exploring}
+%}
+
+Social tagging is another related field where the crowd is used to tag images, including Flickr images~\cite{sigurbjornsson2008flickr}, 
+museum art collections~\cite{trant2006exploring}. 
+A number of studies has examined the quality or conditions of annotators. 
+~\citet{theodosiou2011evaluating} studied the how the crowd can be conditioned to produce better results. 
+~\citet{Kazai:2012:ASJ} and~\citet{Bailey08relevanceassessment} show that in information retrieval experts' judgement 
+can not be replaced by novices. 
+%
+Among these studies, none of the tasks requires the type of expert knowledge as required in our task. 
+That is, highly localized and domain specific knowledge. 
+%
+Further, in contrary to~\citet{Kazai:2012:ASJ} and ~\citet{Bailey08relevanceassessment} where the task setup is the same
+for experts and non-experts, we study whether experts can be replaced by non-experts if we convert the task, i.e., 
+converting the task from a ``non-expert mission-impossible" to ``a non-expert friendly" task. 
+
+%
+Another line of research focuses on aggregating and exploiting noisy annotations collected
+via crowd-soucing. %within the context of active learning and result aggregating~\cite{Snow:2008}.
+For instance, %in the field of NLP, 
+\citet{Snow:2008} used a voting model to aggregate annotations
+and proposed a bias correction approach to estimate the weights of non-expert annotators' annotation. 
+%
+\citet{AMBATI10.244} proposed an active learning
+approach to machine translation that ``actively'' select next task based on collected annotations. 
+\citet{Welinder:2010oc} proposed an online learning approach to dynamically select
+annotators and the number of images assigned to annotators. 
+Graphical models were used to aggregate judgements in~\cite{Hoss12:aggr}
+and were used in~\cite{Welinder:2010fk} to model the annotation process
+aimed at capturing multiple factors that has an impact on the 
+annotators' judgement. 
+%
+While these are not the focus of our current study, 
+we expect that they are relevant for applying
+our approaches in practice, and our current study provides insights of where and when 
+these approaches may be needed within our context.
+
+% Quatliy control on the collected data is another important aspect of crowd sourcing work.
+% \citet{quinn11:survey} summarized a few general guildlines for quality control, such as
+% redundancy, reputation systems, expert reviews and golden 
+% 
+% \begin{description}
+% \item [-- Redundancy] Redundancy is one of the major approaches to improve label quality:
+% e.g, collect labels from multiple annotators for the same object.
+% See Section~\ref{sec:effe} for discussions on aggregating multiple 
+% labels from multiple annotators. 
+% 
+% \item[-- Reputation] Systems such as MTurk provides reputation system that may motivate workers
+% to take the task more seriously so as to build up their reputations for easier access to future jobs.
+% 
+% \item [-- Reviews] Several types of review exist: i) Multilevel review: use a set of workers do the task and a second set of workers evaluate
+% the quality of the tasks; ii) Expert review: Use a trusted expert to skim the results to check apparent accuracy. 
+% 
+% \item [-- Groundtruth seeding] Mixing ground truth with test data can identify low quality workers that frequently
+% make mistakes on the ground truth data.   
+% 
+% \end{description}
+% 
+% Other strategies such as designing trap questions, qualification tasks, 
+% and analyzing worker's behaviors (e.g., workers constantly choose the same label in a classification task
+% may be clicking without thinking,) depend on specific tasks. 
+% 
+% Besides defensive trategies, the instructions and interface of the task present to
+% a worker may influence the cognitive process of the worker.
+% For example, in the context of relevance judgement for
+% search results, \citet{Le2010:insu} found that the distribution
+% of relevant documents present to workers during a training stage 
+% can affect their judgements later: workers tend to learn 
+% the patterns and bias their judgement. 
+% \citet{Kazai11crowd} found that the ordering of documents
+% showing to workers has an impact on their judgements, among
+% which random ordering of documents lead to significantly higher
+% labeling accuracy than biased ordering where a known relevant
+% document is likely to be placed on the top. 
+% 
+% \paragraph{Evaluation.}
+% Last but not least, 
+% the evaluation of the effectiveness of the annotation 
+% result is an important issue during the crowdsourcing. 
+% For instance, we need to pay the 
+% annotators based on the evaluation of the work he submitted. 
+% In our case, evaluation can be done at least at two levels.
+% 
+% First, with respect to the quality of annotations, 
+% %e.g., suppose we aim to develop a mehtod A that collects better annotations 
+% %than a baseline method B, we need to be able to evaluate the performance
+% %of the two methods according to certain measures. 
+% one commonly adopted approach is to compare the performance of both methods
+% on a golden standard set (e.g., \cite{Welinder:2010fk, Kazai11crowd}), with the assumption that the
+% performance of the two methods on the rest of the data is consistent with
+% their performance on the golden standard. 
+% Alternatively, correlation between crowd sourcing annotations and 
+% expert/extra manual annotations can be computed. Again, only a subset of the 
+% original data is used and the same assumption is made (e.g., ~\cite{ahnl:04, Nowak:2010}). 
+% Note that degree of agreement or correlation can be influenced by the
+% evaluation measure used~\cite{Nowak:2010, Kazai11crowd}. 
+% 
+% Further, given that eventually we will use the annotations for certain 
+% task, e.g., as training data for fish recognition, end-to-end comparison
+% of the performance on the recognition task indicates the effectiveness of
+% the quality of our annotations as well as the approach we used to exploit
+% the annotations. Similar evaluation is used in~\cite{ahnl:04}.
+
+
+
+% \subsection{Effectively exploiting annotations}
+% \label{sec:effe}
+% Annotators can make mistakes due to various reasons:
+% their knowledge and ability of handling different types of 
+% tasks, their bias towards certain types of errors (e.g., some
+% annotators are precision oriented while others may be recall oriented),
+% their intention to cheat, 
+% and the difficulty of the tasks. All these factors result in noisy
+% annotation results~\cite{Welinder:2010fk}.
+% 
+% In order to effectively exploit annotations with noise, 
+% much research has been done within the context of active learning and result aggregating.
+% For instance, in the field of NLP, 
+% \citet{Snow:2008} used a voting model to aggregate annotations
+% and proposed a bias correction approach 
+% to estimate the weights of non-expert annotators' annotation. 
+% 
+% In terms of active learning, 
+% \citet{AMBATI10.244} proposed an active learning
+% approach to machine translation. Specifically, the approach consists
+% of an iterative process. In each iteration, a batch of sentences
+% are selected according to certain criteria (e.g., representativeness, 
+% novelty, etc., ) and annotated, and the MT system is then re-trained on
+% the ``old'' and ``new'' annotations. In this case, the ``active''
+% part of the learning procedure only concerns selecting the task (i.e.,
+% the sentences to be translated).
+% %
+% In the following two cases, the ability of the annotators is also
+% considered.
+% \citet{Welinder:2010oc} proposed an online learning approach to dynamically select
+% annotators and the number of images assigned to annotators. 
+% Further, the authors proposed a graphical model to model the annotation process
+% aimed at capturing multiple factors that has an impact on the 
+% annotators' judgement~\cite{Welinder:2010fk}. It is worth mentioning that 
+% the proposed model can capture annotators' ``expertise in different aspects
+% of a task. For example, in a task where annotators are asked to distinguish
+% some bird species, some annotators are more aware of the difference
+% between ducks and greebles, where others are more capable of distinguish
+% between ducks and geese.

@@ -1,0 +1,496 @@
+\section{Labeling with non-experts}
+\label{sec:nonexpt_label}
+
+
+\subsection{Interface}
+With the labeling interface presented in Fig.~\ref{fig:expert_interface},
+%Section~\ref{sec:expt_label},  
+it is very hard, if not impossible, for those who do not have knowledge with coral reef fish species to effectively provide labels. Therefore for non-experts a labeling interface as shown in Figure~\ref{fig:nonexpert_interface} is developed. 
+
+The players are asked to compare a \textit{query image}, i.e., the image to be labeled, to  
+a set of \textit{candidate labels}, i.e., textbook images of candidate species. 
+They click a candidate label if they believe that the fish in that candidate label
+and the query image belong to the same species, or ``others",  if none of the candidates is similar enough to be considered as the correct answer. 
+%
+A feedback score for the chosen label is provided. 
+Ideally, players can learn from the feedback and improve their performance. 
+
+%
+The labeling process is divided into sessions of 50 query images. 
+This gives a break as well as a goal for the players.  
+It typically takes 5 to 10 minutes to complete a session. 
+%, depending the player's familiarity with the system and the task.
+%
+To avoid overloading the players with too many candidates, we limit the number of candidates to 7. 
+%
+To increase user engagement with the labeling task, we show the top 10 scorers. 
+%(those who have achieved 
+%top scores in single sessions), and top contributors (those who have achieved accumulative top scores). 
+This competition element is meant to encourage people to achieve higher scores and play more sessions. 
+
+%\miniskip
+\subsection{Experiment setup}
+\label{subsec:nonexpt_exp}
+
+%Recall that our first research question is: 
+%\emph{with our proposed labeling strategy, can non-experts provide useful labels that are comparable to what experts can provide?} 
+%\emph{
+%Can non-experts achieve acceptable performance when compared 
+%with the labels provided by the experts?
+%}
+%From the data obtained from the experts, 
+
+%To answer our two research questions described in Section~\ref{sec:intro}, 
+%we conduct two experiments that simulates two situations.
+
+%\shrink
+\subsubsection{Two simulated situations}
+During the manual clustering stage, we find that 53 out of the 190 images 
+were assigned to ``wrong" clusters. %during the manual clustering stage.  
+That is, there exist many fish that look similar but belong to different species. 
+Our first research question thus boils down to
+ %
+\emph{Can non-experts distinguish between similar species when examples of these species are displayed
+next to each other?}
+To find answers to this question, we conduct two experiments that simulate two situations. 
+%
+
+%\miniskip
+\noindent
+\textbf{Experiment 1.}
+We first assume an ideal situation, where the \emph{target label(s)} (labels suggested by the biologists) 
+of the query image is always among the candidates.
+The primary goal of the experiment is to investigate whether the players can identify
+the target label when there exist very similar species.
+
+We select candidates that are similar to the target labels as follows.
+%Recall that we have manually created clusters which are not always pure. 
+Let $c=\{i_n\}_{n=1}^N$ be a cluster containing $N$ query images, and $f(i)$ maps an image
+to one of the species $S=\{s_m\}_{m=1}^M$.
+We compute a relevance score between an image $i \in c$ and a species as
+%\begin{equation}
+$\text{score}(i, s) = \text{count}(\{f(j) = s, j \in c\})/N$.
+%\end{equation}
+All species with a non-zero score are the ones that were clustered together, which means
+that they are visually similar. We select top 7 species as candidates.
+If less than 7 species were available, we fill the remaining slots with random images.
+If more than 7 species have non-zero scores, 
+%e.g., in case
+%the biologists have assigned multiple labels to some of the images in the cluster, 
+we make sure that the target labels are in the candidates.
+%
+
+%\miniskip
+\noindent
+\textbf{Experiment 2.}
+We then consider a more realistic situation when some target labels are not in the candidates. 
+%
+%Notice the number of candidates is way smaller than the number of
+%all possible fish species, e.g., 288 if we consider all the species mentioned by the biologists for the 190 images.
+%
+In practice, we do not have information about the target labels of the query images.
+We need to select candidates based on certain similarity measures computed with automatic
+methods, which are most likely imperfect. 
+It is then important to know whether the non-expert players can still make right 
+choice, that is, select ``others", when similar species are displayed as candidates. 
+%
+We use the same setting as in Expr.1 to select candidates and deliberately remove
+the target labels from the candidates for a set of randomly selected query images. 
+%On the one hand, we want sufficient cases where the target labels are removed, 
+%on the other hand, 
+Notice, if too many target labels are removed, users may
+expect that ``others" is always the safe bet when they are not sure.   
+With a few trial runs, we decide to remove the target labels for 25\% of the query images. 
+%
+
+%\shrink
+\subsubsection{System feedback}
+\noindent
+%\textbf{Settings of feedback scores.}
+%\label{subset:feedbacksetting}
+%Apart from our main research question, we are also interested in 
+Our second research question was: \emph{Can non-experts learn and improve their performance during the game?}
+
+Players may be able to improve their performance for different reasons:
+learning from the system feedback, getting used to the quality of the images, etc.
+%They may for instance learn from the system feedback, get used to the quality of the images, etc.
+In this study, we do not aim to identify \emph{why} and \emph{how} users improve, but focus on whether
+they \emph{can} learn and improve. 
+%
+%We therefore only consider the simplest case for the system feedback,  i.e., feedback from the expert labels. 
+%In this study, we only consider the simplest case for the system feedback, i.e., feedback from the expert labels.
+Here we only consider the simplest and ideal system feedback, namely feedback from the expert labels.
+%That is, under the ideal feedback setting, can users learn and improve over time?
+Specifically, we assign scores to each click on an candidate label based on the biologists' voting, 
+%Since experts do not always agree, 
+i.e., a click on an option can receive 0, 1, 2, or 3 points.
+%depending on the number of biologists agree that it is the target label. 
+%
+In practice when expert labels are not available, other types of feedback should be used, e.g., 
+peer-agreement, automatic similarity measures. 
+We leave questions such as how these feedbacks influence the user learning behavior to future investigation.
+%are also very interesting research directions. We leave these for future investigation.
+
+
+%\shrink
+\noindent
+\subsubsection{Aggregation of obtained labels}
+%\label{subsec:data_nonexp}
+We use convenience sampling to collect players. %non-expert annotators. 
+We launched the game in our own social network and in public events, e.g., demo exhibitions. 
+Our users have a diverse background and age groups, including school age children
+as well as university students and researchers. 
+%
+We collect labels for the 190 images labeled by the experts.  %Avg.\#Label refers to the average number
+22 players contributed 72 sessions in Expr. 1 and 32 players contributed 49 sessions in Expr. 2. 
+On average each image received 19 and 13 labels, respectively.
+%
+%
+Notice that in Expr. 2 we have more players but less sessions. This is because most
+of the sessions of Expr. 2 were done in a public event, where people typically 
+try out for just one session.  
+%
+Four players have participated both experiments and in total played 9 sessions in Expr. 2. 
+In our evaluation of Expr. 2, we will treat their contributions separately, as they may have been 
+trained in Expr. 1 and their performance is not comparable with those who were new to the game.
+
+%\miniskip
+%\noindent
+%\textbf{Aggregating non-expert labels.}
+%Since each query image is associated with multiple labels from multiple players, we 
+%need to aggregate them into a single assignment for evaluation.
+%
+%While there exist many different approaches for aggregating labels, 
+%here 
+%We consider two simple strategies. 
+%
+%With the first strategy, we randomly select one of the players' labels as the chosen label for the query image. 
+%If we run this random aggregation, say, 100 times, we obtain a sample of 100 label assignments given random labels from random %players.
+%By evaluating the result of the randomly aggregated labels, we obtain an expected performance of a single player. 
+%
+%The second aggregation strategy is majority voting. 
+%With majority voting, we can see if the crowd can help to cover individual' errors. 
+To aggregate the labels from multiple players into a single label assignment for evaluation, we use
+a simple majority voting strategy.
+Since experts may give multiple labels to an image (as ground truth), 
+we do not simply take the winner of the majority voting as the chosen label, but rank
+the candidates in descending order of their votes.
+%provide a rank of the candidates in descending order of their votes.
+%
+In Expr. 2 when target labels are not displayed and ``others" are \emph{correctly} chosen,
+they do not provide information about which label should be assigned to the image.
+We ignore these cases for aggregating as they neither hurt or help the performance. 
+
+
+%=========OLD===========
+\if 0
+%\miniskip
+\subsection{Interface}
+For non-experts, a labeling game interface as shown in Figure~\ref{fig:nonexpert_interface} is used.
+The players are asked to compare a \textit{query image} (i.e., the image to be labeled) to  
+a set of \textit{candidate labels}, i.e., labeled images of candidate species.
+%
+%where the category images are the textbook examples of fish species 
+%\footnote{We call a fish species or family a ``category". When evaluating the user
+%performance, we consider categories in both species and family levels; when showing candidate
+%categories, we only consider species level, as it is the lowest level in taxonomy of the biological classification.}. 
+%
+To avoid overloading the players with too many candidates, we limit
+the number of candidates to 7. 
+They choose from one of the candidates if they believe that the fish in that candidate label
+and the query image belong to the same species, or ``others",  if none of the candidates is similar enough to 
+be considered as the correct answer. The labeling task is then a multiple choice based on 
+the perceived visual similarity between the query image and the candidate label images. 
+%
+The player receives a feedback score for each choice he/she makes. 
+Ideally, he/she can learn from the feedback and tries to improve his/her performance. 
+
+We divide the labeling process into sessions of 50 query images. 
+This gives a break as well as a goal for the players.  
+It typically takes 5 to 10 minutes to complete a session, depending on whether the player is familiar with the 
+system and the task.
+
+In order to increase user engagement with the labeling task, we included competition
+elements. We show the top 10 scorers (those who have achieved top scores in single sessions),
+and top contributors (those who have achieved accumulative top scores), which is meant to encourage
+people to achieve higher scores and play more sessions.
+
+
+%\miniskip
+\subsection{Experiment setup}
+\label{subsec:nonexpt_exp}
+Recall that our first research question is: 
+%\emph{with our proposed labeling strategy, can non-experts provide useful labels that are comparable to what experts can provide?} 
+%\emph{
+Can non-experts achieve acceptable performance when compared 
+with the labels provided by the experts?
+%}
+
+%From the data obtained from the experts, 
+We find that 53 out of the 190 were assigned to ``wrong" clusters during
+the manual clustering stage.  That is, there exist many fish that look similar but do not belong to the same species. 
+The question thus boils down to
+ %
+\emph{Can non-experts distinguish between similar species when examples of these species are displayed
+next to each other?}
+%
+To find answers to this question, we conduct two experiments that simulates two situations. 
+%
+
+%\miniskip
+\subsubsection{Experiment 1}
+We assume an ideal situation, where the \emph{target label(s)}, i.e., labels suggested by the biologists,  
+of the query image is always among the candidates.
+The primary goal of the experiment is to investigate whether the players can identify
+the target label when there exist very similar species.
+
+We select candidates that are similar to the target labels as follows.
+Recall that we have manually created clusters which are not always pure. 
+Let $c=\{i_n\}_{n=1}^N$ be a cluster containing $N$ query images, and $f(i)$ maps an image
+to one of the species $S=\{s_m\}_{m=1}^M$.
+We compute a relevance score between an image $i \in c$ and a species as
+%\begin{equation}
+$\text{score}(i, s) = \text{count}(f(c) = s)/N$.
+%\end{equation}
+All species with a non-zero score are the ones that were clustered together, which means
+that they are visually similar. We select top 7 species as candidates.
+If less than 7 species were available, we fill the remaining slots with random images.
+If more than 7 species have non-zero scores, e.g., in case
+the biologists have assigned multiple labels to some of the images in the cluster, we make sure that
+the target labels are in the candidates.
+%
+%
+%\miniskip
+\subsubsection{Experiment 2}
+%In this experiment, we investigate whether the non-experts can make correct decision
+%when the target labels are not in the candidates.
+We now consider a more realistic situation when some target labels are not in the candidates. 
+%
+Notice the number of candidates is way smaller than the number of
+all possible fish species, e.g., 288 if we consider all the species mentioned by the biologists for the 190 images.
+%
+In practice, we do not have information about the target labels of the query images.
+We need to select candidates based on certain similarity measures computed with automatic
+methods, which are most likely not perfect. 
+It is then important to know whether the non-expert players can still make right 
+choice, i.e., select ``others" when similar species are displayed as candidates. 
+
+We use the same setting as in Expr.1 to select candidates and deliberately remove
+the target labels from the candidates for a set of randomly selected query images. 
+On the one hand, we want sufficient cases where the target labels are removed, 
+on the other hand, if too many target labels are removed, the users may
+expect that ``others" is always the safe bet when they are not sure.   
+With a few trials, we decide to remove the target labels for 25\% of the query images. 
+%
+
+%\miniskip
+\subsubsection{Settings of feedback scores}
+%\label{subset:feedbacksetting}
+%Apart from our main research question, we are also interested in 
+Our second research question was: To which extent can the non-expert players learn their performance during the game?
+%\emph{Can non-expert improve their performance over time?}
+
+%Intuitively, we expect that users learn from the system feedback scores given that they would aim to achieve higher scores.
+%There are however more than one reason why the annotators may be able to improve their performance. 
+The players may be able to improve their performance for a number of reasons.
+%E.g., they may learn from the system feedback,  may get used to the quality of the images over time and are able to observe more details. 
+They may for instance learn from the system feedback, get used to the quality of the images, etc.
+In this study, we do not aim to identify \emph{why} and \emph{how} users improve, but focus on whether
+they \emph{can} or \emph{cannot} learn and improve. 
+
+%We therefore only consider the simplest case for the system feedback,  i.e., feedback from the expert labels. 
+In this study, we only consider the simplest case for the system feedback, i.e., feedback from the expert labels.
+That is, under the ideal feedback setting, can users learn and improve over time?
+Specifically, we assign scores to each option of the candidates based on the biologists' voting. 
+Since experts do not always agree, a click on an option can receive 0, 1, 2, or 3 points, 
+depending on the number of biologists agree that it is the target label. 
+
+In practice when expert labels are not available, of course, other types of feedback should be used, e.g., 
+peer-agreement, automatic similarity measures. 
+We leave questions such as how these feedbacks influence the user learning behavior to future investigation.
+%are also very interesting research directions. We leave these for future investigation.
+
+%\miniskip
+\subsection{Data obtained}
+%\label{subsec:data_nonexp}
+We use convenience sampling to collect our players. %non-expert annotators. 
+We launched our game in our own social network as well as in public events, e.g., demo exhibitions. 
+Our users have a diverse background and age groups, including school age children
+as well as university students, researchers, etc. 
+%
+We collect labels for the 190 images that are labeled by the experts.  %Avg.\#Label refers to the average number
+22 players contributed 72 sessions in Expr. 1 and 32 players contributed 49 sessions in Expr. 2. 
+On average each image received 19 and 13 labels, respectively.
+%
+%\begin{table}[h!]
+%\vspace*{-\baselineskip}
+%\caption{Statistics of the collected labels. }
+%\centering
+%\begin{tabular}{lccc}
+%\hline
+%Experiment & \#Users & \#Sessions & Avg.\#Labels per image\\
+%\hline
+%1 & 22 & 72 &  19\\
+%2 & 32 & 49 &  13\\
+%\hline
+%\end{tabular}
+%\label{tab:stats_label}
+%\vspace*{-\baselineskip}
+%\end{table}
+%
+Notice that in Expr. 2 we have more players but less sessions. This is because most
+of the sessions of Expr. 2 were done in a public event, where people typically 
+try out for just one session.  
+%
+%Therefore when studying the learning effect of users, we only consider the labels collected in the first experiment. 
+%In Experiment 2, among the 32 annotators, 
+%
+Four players have participated both experiments and in total played 9 sessions in Expr. 2. 
+In our evaluation of Expr. 2, we will treat their contributions separately, as they may have been 
+trained in Expr. 1 and their performance is not comparable with those who were new to the game.
+
+%\miniskip
+\subsection{Aggregating non-expert labels}
+Since each query image is associated with multiple labels from multiple players, we 
+need to aggregate them into a single assignment for evaluation.
+%
+%While there exist many different approaches for aggregating labels, 
+%here 
+We consider two simple strategies. 
+
+With the first strategy, we randomly select one of the players' labels as the chosen label for the query image. 
+If we run this random aggregation, say, 100 times, we obtain a sample of 100 label assignments given random labels from random players.
+By evaluating the result of the randomly aggregated labels, we obtain an expected performance of a single player. 
+%
+The second aggregation strategy is majority voting. 
+%With majority voting, we can see if the crowd can help to cover individual' errors. 
+Since experts may give multiple labels to an image, 
+we do not simply take the winner of the majority voting as the chosen label, but rank
+the candidates in descending order of their votes.
+%provide a rank of the candidates in descending order of their votes.
+
+In Expr. 2 when target labels are not displayed, the labels ``others" can be correct
+but not providing information about which label should be assigned to the image.
+% label ``others'' can be correct but does not provide
+%actual information about which label should be assigned to the image, i.e., in case
+%that the target labels are not displayed. 
+We ignore these labels when aggregating as they neither hurt or help the performance. 
+
+\fi
+%\subsection{Aggregating non-expert labels}
+%\label{subsec:agg_nonexp}
+%After rounds of annotation, each image is attached with a set of labels by a number of annotators.
+%We then need to aggregate these annotations into a coherent assignment of labels. 
+%Preferably the aggregated labels is consistent with the labels provided by the marine biologists.
+%As we have already seen, an image can have multiple possible labels according to the expert judgements, 
+%some are more preferable than others.
+%When aggregating the non-expert annotations, similarly, we allow an image to be assigned to multiple categories
+%and meanwhile aim to obtain an estimation of how likely a category is relevant to the image (or in other word, is
+%the correct target label for that image).
+%%
+%Ideally, the aggregated non-expert labels matches expert labels. For example, the category that is most likely to be 
+%the target label according to the non-experts is also the most preferred label according to the experts.
+%
+%
+%Let us start with a more formal statement of the problem. 
+%For an images $i$ and a set of categories (i.e., fish species or family names) $C_i=\{c_j\}_{j=1}^N$, the goal
+%is to assign ``relevance'' scores to each $(i, c)$ pairs, where $c \in C$ and $i \in I$ that indicates how likely a category $c$
+%is the correct answer for image $i$.  For simplicity, we only consider candidate categories that has been judged at least once. 
+%
+%When annotating an image,  each annotator sees a set of candidate categories $C_i=\{c_k\}_{k=1}^K$, 
+%where $k<<N$. The annotator is asked to pick the one that they think is most likely to be the correct answer.
+%We consider two ways to aggregate the labels from multiple annotators (as well as the labels provided by the same annotator
+%but at different time points). 
+%
+%\subsubsection{Voting}
+%The first method we consider is a simple voting approach.
+%Specifically, we define the relevance score of a category $c$ with respect to image $i$ as the number of times
+%$c$ is selected as the target label for $i$ out of the number of time $c$ and $i$ are shown together to be judged, 
+%\begin{equation}
+% s(c, i) = \frac{count(c^*= c, i)}{count(c, i)},
+%\end{equation}
+%where $c^*$ is the category selected by the annotator as the target label.   
+%That is, when $c$ and $i$ are shown together to the annotators, 
+%the more often category $c$ is chosen to be the target label for image $i$, the more likely that $c$ is relevant to $i$.
+%
+%
+%\subsubsection{Maximum a posteriori (MAP) estimation}
+%\todo{Why is it better than voting? because voting is not robust against random noise}
+%
+%Notice that in our set-up, the annotators do not see the whole set of candidates and therefore the labels they give only provide
+%their preference among the $k$ candidates. Hence, instead of treating each label as an independent assignment
+%of a category to an image, it is probably more appropriate to treat it as a comparison between the $k$ candidate categories.
+%That is, the selected category $c^*$ is the most likely correct answer \textit{relative} to the other $k-1$ candidates.
+%
+%To convert the (incomplete) preference judgements from multiple annotators to a single scale rating of the relevance scores
+%between the candidate categories and the image, we follow Thurstone's Case V Model~\cite{thurstone27:alaw}.
+%
+%Let $r_{k, i} \sim \mathcal{N}(\mu_{k, i}, \sigma_{k, i}^2)$ and $r_{l, i} \sim \mathcal{N}(\mu_{l, i}, \sigma_{l, i}^2)$
+%be the distribution of the true relevance of two categories $c_k$ and $c_l$ with respect to image $i$.  
+%For simplicity, in the rest of the section,
+%we will drop all the $i$'s and keep in mind that all the discussion is with respect to a specific image $i$.
+%
+%For a category $c$, the mean of its corresponding Gaussian $\mu_c$ is taken to be its \textit{relevance score}.
+%%
+%The \textit{relevance} of a category, on the other hand, is assumed to be a Gaussian random variable, since the annotators' judgements
+%are subjective: different people, or perhaps a same person at different times,  may have different opinions about the relevance
+%of the same pair of $(c, i)$. 
+%%
+%According to Thurstone's model, when the annotators judge whether category $k$ is better than $l$, 
+%%a realization of the relevance of $c_k$ and $c_l$ is drawn from each of the relevance distributions and the option with the higher relevance is chosen. 
+%they sample a realization of the relevance difference from the distribution 
+%\begin{equation}
+%r_{k}-r_{l} \sim \mathcal{N}(\mu_{kl}, \sigma_{kl}^2), 
+%\end{equation}
+%where $\mu_{kl} = \mu_k - \mu_l$, and $\sigma_{kl}^2$ is the variance of the difference of random variables $k$ and $l$. 
+%% 
+%They choose $k$ over $l$ if $p(r_k - r_l > 0)$,  and we have
+%%
+%\begin{equation}
+%%\mu_{kl} = \sigma^2_{kl}\mathrm{\Phi}^{-1}(p(r_k - r_l)), 
+%p(r_k-r_l > 0) = \mathrm{\Phi} (\frac{\mu_k - \mu_l}{\sigma_{kl}}) 
+%\end{equation}
+%where $\mathrm{\Phi}$ is the inverse cumulative density function (CDF) of the standard normal distribution.
+%%
+%Further, with the Case V assumptions, i.e., equal variance and zero correlation of $k$ and $l$, $\sigma^2_{kl}$ can be 
+%set to 1~\cite{thurstone27:alaw, tsukida11:how}.
+%For more details of the derivation of the equations we refer to~\cite{tsukida11:how}.
+%
+%Now back to our original problem, where we have $N$ candidate categories with unknown relevance scores $\mu=[\mu_1, ..., \mu_n]$. 
+%Our goal is to find an assignment of $\mu$ that fits best with our annotated data. 
+%%
+%We employ a maximum a posteriori estimation, which has shown reliable performance compared to many other approaches~\cite{tsukida11:how}.
+%
+%We first convert the result of the annotation to preferences of one category over another.
+%For example, if $c_1$ is selected among candidates $c_1$, $c_2$ and $c_3$, we have preferences $c_1>c_2$ and $c_1>c_3$.  
+%We store the counts of such preference aggregated from multiple judgements in a matrix $M$. 
+%% 
+%\begin{equation}
+%   m_{ij} =
+%   \begin{cases} 
+%   \textit{count}(c_i > c_j),  & i \ne j, \\
+%   0,  & i=j.
+%    \end{cases}	
+%\end{equation}
+%%
+%Then, following~\cite{tsukida11:how}, to find the maximum a posteriori assignment, we solve the following optimization problem: 
+%\begin{equation}
+% \begin{split}
+%\arg\max_{\mu}  & \sum_{k, l} M_{k,l}  \log(\mathrm{\Phi} (\mu_k - \mu_l) ) - \sum_k \frac{\mu_k^2}{2},\\
+%\text{subject to}   & \sum_k \mu_k = 0,
+%\end{split}
+%\end{equation}
+%where the first term of the objective function is the log-likelihood of $\mu$ given our annotated data, and
+%the second term is a Gaussian prior. The constraint makes sure that the assignment is unique. 
+
+
+
+
+
+
+
+
+
+
+
+

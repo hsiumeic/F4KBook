@@ -1,0 +1,276 @@
+\section{Introduction}
+\label{sec:intro}
+%\todo{Terminology: user = non-expert annotator; game or labeling
+%interface; labeling is an action that provides labels, each image has
+%multiple labels (non-zero vote candidate categories), 
+%change candidate category to candidate label? a judgement is a 0/1
+%decision whether a candidate label/category is relevant.} \todo{Check
+%terminology: annotation, labeling, label, judgements}
+Creating ground truth data for video-based retrieval and computer vision research 
+is often a time consuming task done by humans using
+dedicated tools such as those presented in~\cite{Spam12:vigta}.
+%
+Recently, crowd-sourcing as a collaborative problem solving strategy has
+received much attention.
+In particular, within the computer vision communities, where \emph{large scale}
+ground truth data are needed, the wisdom of the crowd was shown to
+provide effective solutions in a wide range of problems~\cite{Russell08:Label, 
+Yuen09:Label, ahnl:04, ahnl06:peekaboom, Chen:2011:LFA}. %anhl06:impr
+%
+Typically, the annotation/labeling tasks the crowd is asked to 
+perform are relatively easy, that is, little or no expert knowledge is required. 
+
+Instead, this paper studies an image labeling task that requires
+highly specialized domain knowledge. %The ground truth obtained in this manner 
+The ground truth obtained
+serves as training material for machine learning approaches
+that aim to classify fish species on video footage of Taiwanese coral
+reefs.
+%%
+%This is a difficult task, both because the footage is often of
+%relative low quality (bad lighting conditions, murky water) and
+%because many fish species are visually very similar.  More
+%importantly, 
+Correctly identifying fish species %by their scientific
+%name 
+on this footage requires expertise from marine biologists, 
+which is highly localized: biologists specialized on the
+Australian reefs perform not as good as those specialized on the
+%fishes that live on the Taiwanese reefs). 
+Taiwanese coral reef fish species.
+%
+%On the other hand, 
+Further, since experts are a scarce and expensive resource, 
+%it is not likely to rely on them to obtain
+it is unlikely that they would provide 
+the amount of image labels needed for the purpose
+of training and evaluating the fish classification models. 
+The question is then, can we create a ground truth set of sufficient \emph{quantity} with sufficient \emph{quality}
+by taking advantage of the collaborative problem solving ability of the crowd, %strategy, %ability of the crowd, 
+while solving the problem that the crowd generally lacks the domain knowledge required by the task?
+
+A smart way of presenting a problem or decomposing a complicated problem 
+into simpler sub-problems may greatly reduce its difficulty and makes an infeasible task feasible. 
+Typical examples include Foldit~\cite{cooper2010:pred} that
+uses a puzzle solving game for protein structure prediction.
+%Their results show that it is possible to use non-experts to solve complicated
+%scientific problems.
+Another example is Galaxy zoo~\cite{website:Galaxyzoo} 
+%\footnote{\url{http://www.galaxyzoo.org/}}
+that uses ``citizens' wisdom''
+to contribute to morphological classification of galaxies.
+%%
+%Similar to these problems, our image labeling task requires highly specialized knowledge in marine biology. Since experts are a scarce and expensive resource and are not likely to provide labels in large quantity, 
+%Because experts are a scarce resource, 
+%we use their expertise to transform the difficult fish labeling task into a game based on a
+%visual similarity comparison task that can be performed by large numbers of non-experts. 
+%Because experts are a scarce resource, 
+%
+%With respect to 
+For our labeling problem,  we use the expertise of marine biologists to
+transform the fish identification task into a game based on a
+visual similarity comparison task that can be performed by a large
+number of non-experts. 
+%
+%In the game, players are shown a single
+%\emph{query image} along with multiple labeled images of candidate
+%species, referred to as \emph{candidate labels}, and are asked to
+%assign the query image to the label that depicts the same species as
+%the fish in the image. 
+We then conduct a user study and seek the 
+answers to the following questions:
+(i) Can non-expert players of this game achieve acceptable
+performance evaluated with the labels provided by the experts?
+and (ii) Can players learn and improve their performance during the game?
+%Can the performance of non-experts be improved through
+%learning during the game?
+%we first question whether non-expert players of this
+%game can achieve acceptable performance when compared with the
+%experts' performance in the original recognition task. Second, we
+%analyze to which extent this performance can be learned during the
+%game.
+%
+We find that after the task conversion, non-expert players achieve an
+agreement with the experts comparable to that achieved among the
+experts themselves. Further, players improve their performance while
+playing the game: they are able to recognize a fish better not only
+when they see the same fish again, but also when
+they see a different fish from the same species. 
+
+Our contributions are two fold. First, we propose a task conversion
+approach to solve an image recognition problem that requires highly
+specialized domain knowledge with non-expert users. Second, our study
+on the learning behavior of the non-expert users provides insights
+into the ability and limits of the crowd.  
+
+%=================== OLD ===============================
+\if 0
+Many approaches in information retrieval (IR) and computer vision (CV)
+rely on relevance judgements or correctly labeled images, both to
+train and to evaluate the algorithms developed. 
+%
+Creating ground truth data %for video-based retrieval and computer
+vision research is often a time consuming task done by humans using
+dedicated  tools such as those presented in~\cite{Spam12:vigta}.
+%
+%\cite{Giro2012:multi, Moeh2012:effe}.  Examples of crowdsourcing such
+%ground truth collection in order to obtain larger scale datasets
+%include  \cite{Russell08:Label} for image and video labeling or
+%\cite{Hoss12:aggr} for INEX document/topic relevance assessments.
+%
+Crowd-sourcing as a colleborative problem solving strategy has
+received much attention recently.
+%
+In particular, within the IR and CV communities, where large scale
+ground truth data are needed, the wisdom of the crowd was shown to
+provide effective solutions in a wide range of problems, ranging from
+image/video annotation~\cite{Russell08:Label, Yuen09:Label, ahnl:04,
+anhl06:impr, ahnl06:peekaboom, Chen:2011:LFA}, to text
+annotation~\cite{AMBATI10.244, Finin:2010:ANE} and search result
+assessments~\cite{eickhoff12:qual, Hoss12:aggr}. %kazai:overview11
+%
+%
+%Creating such ground truth data sets typically requires a large
+%amount of manual effort.  Crowd-sourcing is a commonly applied
+%strategy. 
+%
+Typically, the task the crowd is asked to perform is relatively easy,
+and the focus is on the incentives needed to attract a sufficient
+\emph{quantity}~\cite{ahnl:04, Russell08:Label} of users who together
+create a dataset of sufficient \emph{quality}~\cite{Kazai09onthe,
+Kazai11crowd, quinn11:survey}. 
+
+%Instead, this paper studies a domain in which an image labeling task
+Instead, this paper studies an image labeling task that requires
+highly specific domain knowledge. The ground truth obtained in this
+manner serves as training material for machine learning approaches
+that aim to classify fish species on video footage of Taiwanese coral
+reefs.
+%
+This is a difficult task, both because the footage is often of
+relative low quality (bad lighting conditions, murky water) and
+because many fish species are visually very similar.  More 
+importantly, 
+Correctly identifying fish species by their scientific
+name on this footage requires expertise (i.e. from marine biologists)
+which is highly localized (i.e. biologists specialized on the
+Australian reefs perform not as good as those specialized on the
+fishes that live on the Taiwanese reefs). 
+
+\todo{Some reviewers ask why we don't get high quality images: this is
+not a question, it doesn't make sense to train classifiers on high quality images
+and apply it on low quality images.}
+
+Because experts are a scarce resource, we use their expertise to
+transform the difficult fish labeling task into a game based on a
+visual similarity comparison task that can be performed by large
+numbers of non-experts. In the game, players are shown a single
+\emph{query image} along with multiple labeled images of candidate
+species, referred to as \emph{candidate labels}, and are asked to
+assign the query image to the label that depicts the same species as
+the fish in the image. 
+
+%In this paper, we first question whether non-expert players of this
+%game can achieve acceptable performance when compared with the
+%experts' performance in the original recognition task. Second, we
+%analyze to which extent this performance can be learned during the
+%game.
+%
+We ask two research questions:
+\begin{description}
+\item[RQ1.] Can non-expert players of this game achieve acceptable
+performance evaluated with the labels provided by the experts?
+\item[RQ2.] Can the performance of non-experts be increased through
+learning during the game?
+\end{description}
+%with the experts' performance in the original recognition task
+
+To study these research questions, we ask three Taiwanese marine
+biologists to perform the recognition task and analyze the results.
+%(Section~\ref{sec:expt_label}).  
+%
+We then transform the task into an image matching game that is played
+by non-experts in two modes. First, we study players' performance in
+an ideal setting where the correct answer is always present. 
+%
+We compare this to a more realistic setting, where in some cases the
+correct species are not shown, but other, visually similar species
+are.   
+% (details of the game and both settings are given in
+% Section~\ref{sec:nonexpt_label}). 
+%(Section~\ref{sec:nonexpt_label}). 
+%
+We evaluate the game results in terms of (a) agreement between experts
+and non-experts; (b) the quality of the non-expert labels measured by
+NDCG; and (c) the learning behavior of the players in terms of
+memorization and generalization. %(Section~\ref{sec:eval}).
+%
+%The result of the evaluation is discussed in Section~\ref{sec:res},
+%while Section~\ref{sec:con} concludes the paper with a discussion of
+%the implications, limitations and future work of our study. 
+%
+We find that after the task conversion, non-expert users achieve an
+agreement with the experts comparable to that achieved among the
+experts themselves. Further, players improve their performance while
+playing the game, not only are they able to better recognize a fish
+when they see the same fish (i.e., same image) again, but also when
+they see a different fish (i.e., different image) of the same species. 
+
+Our contributions are two fold. First, we propose a task conversion
+approach to solve an image recognition problem that requires highly
+specialized domain knowledge with non-expert users. Second, our study
+on the learning behavior of the non-expert users provides insights
+into the ability and limits of the crowd.  
+
+The rest of the paper is organized as follows. 
+We discuss related work in Section~\ref{sec:rel}. 
+%on crowd sourcing for collecting ground truth data.
+In Section~\ref{sec:expt_label} we describe our experiment with
+experts for the recognition task. We present the details of the game
+and our experiments with non-expert players
+in~\ref{sec:nonexpt_label}. followed by our evaluation setup in
+Section~\ref{sec:eval}. The results of this evaluation are presented
+and discussed in Section~\ref{sec:res}. Section~\ref{sec:con}
+concludes the paper with a discussion of the implications,
+limitations, and future work of our study. 
+\fi
+%We then evaluate the results in terms of (a) agreement between experts and non-experts, (b) the quality of the non-
+%expert ranking measured by NDCG, and (c) the learning effects measuring memorisation and generalisation 
+%(Section \ref{sec:eval}).
+
+%\todo{Crowdsourcing is a commonly applied strategy. 
+%Many studies in crowd sourcing focuses on incentives. We focus on a different problem: knowledge.}
+%
+%\todo{We conduct a case study, ... introduce the task, why it is difficult.}
+%
+%
+%\todo{What do we do?}
+%\begin{itemize}
+% \item convert a expert task to a non-expert task 
+% \item provide feedback to non-experts and hopefully they can learn during the labeilng process. 
+% \end{itemize}
+%
+%We study an image labeling case where the primary goal is to identify fish species
+%from images extracted from videos recorded by underwater videos. 
+%With respect to the two types of annotators, i.e., experts and non-experts, we consider
+%two separate tasks, namely \textit{recognition} and \textit{similarity comparison}.
+%
+%The experts are asked to perform the recognition task. 
+%That is, given an image, the expert is asked to provide the scientific name of the fish in the image. 
+%The non-experts, on the other hand, are asked to perform the similarity comparison task. 
+%They are shown examples of some candidate species, referred to as \emph{categories},  
+%and assign the image to one of the categories that they believe has the same species as the fish in the image. 
+%This way,  instead of actively come up with the species of the fish, the non-experts passively receive
+%the possible candidate species, and make decisions based purely on comparisons on visual similarities.   
+%This is a much easier task than the recognition task, feasible for people without any domain knowledge. 
+%
+%The question is then: \emph{are the labels obtained in this way of sufficient quality?}
+%In order to answer this question, we conduct the following experiments. 
+
+%\todo{What do we want to find out?}
+%\begin{itemize}
+%\item Can non-experts achieve a accetable performance in an expert task (given a sepicific setup)?
+%\item Can non-experts learn and improve their performance?
+%\end{itemize}
+%
+%Make aggregation part of the methods.
