@@ -1,2 +1,55 @@
-Chap12.tex
-Please provide your chapter content here. 
+Hierarchal classification system with reject option for live fish recognition
+
+
+Table of Contents
+1 Introduction & Motivation
+\section{Introduction}
+\label{sec:introduction}
+Live fish recognition in the open sea is a challenging multi-class classification task. We propose a novel hierarchical classification method to recognize fish with a reject option in an unrestricted natural environment recorded by underwater cameras. We present a Balance-Guaranteed Optimized Tree (BGOT) to control the error accumulation in hierarchical classification and, therefore, achieve better performance. A BGOT of 15 fish species is automatically constructed using the inter-class similarities and a heuristic method. To make use of the temporal sequence information, we develop a trajectory voting mechanism. The proposed BGOT-based hierarchical classification method achieves about 8\% better accuracy compared to state-of-the-art techniques on a live fish image dataset. Since hierarchical methods accumulate errors along the decision path, the reject option in classification is provided to filter less confident decisions of known classes or to probe new class. We apply a Gaussian Mixture Model (GMM) to
+evaluate the posterior probability of testing samples. We compare 3 rejection methods, and the experiment result demonstrates an improvement in eliminating the accumulated errors from hierarchical classification and discovering unknown classes.
+
+1.1 Why We Want To Recognize Fish?
+1.1.1 Introduction to Underwater Surveillance Approaches
+1.1.2 Automatic Underwater Fish Recognition
+2 Literature Review
+2.1 Summary of fish analysis approaches
+2.2 Literature Summary
+3 Features
+3.1 Shape feature
+3.2 Texture feature
+3.3 Boundary features
+3.4 Fish Description
+3.5 Fish Species Recognition Method
+3.6 Feature selection
+4 Taxonomy knowledge tree for fish recognition
+4.1 Introduction
+4.2 Taxonomy knowledge based tree
+4.3 Experiment with fish recognition
+4.3.1 Feature extraction
+4.3.2 Hierarchical classification
+4.3.3 Results and analysis
+4.4 Conclusion
+5 Balance-Guaranteed Optimized Tree for fish recognition
+5.1 Introduction
+5.2 Hierarchical classification approach
+5.2.1 Heuristic method
+5.2.2 Algorithm of generating BGOT
+5.3 Experiment with fish recognition
+5.3.1 Feature extraction
+5.3.2 Hierarchical classification
+5.3.3 Results and analysis
+5.4 Conclusion
+6 Decision Refining
+6.1 Probability & Uncertainty assessment
+6.2 Blurred image detection
+6.3 New species detection
+6.4 Introduction
+6.5 Classification with reject option
+6.6 Gaussian mixture model for reject option
+6.7 Experiments
+6.7.1 Fish database
+6.7.2 Result rejection in fish recognition
+6.7.3 Experiment design and parameter choices
+6.7.4 Result analysis and discussions
+6.8 Conclusion
+7 Conclusion
