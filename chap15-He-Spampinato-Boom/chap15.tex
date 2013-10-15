@@ -1,3 +1,37 @@
-Chap15.tex
-Please provide your chapter content here. 
-Test
+This chapter describes the algorithms and tools we have developed
+to collect ground truth data for training and evaluating
+each of the system components.
+ 
+\section{Detection and Tracking}
+%\input{detection_tracking_gt/detection_ground_truh}
+Three tools have been devised to generate ground truth for detection and tracking: the first one is standard stand-alone tool that exploits computer vision techniques to support users for fast generation of ground truth, the second one, instead, is a collaborative tool that integrates the contributions of motivated users to generate high-quality ground truth, and, the last one is an online game that resorts to the crowd to generate reliable ground truth for object detection and tracking.
+Each of the aforementioned tool is explained in the following.
+
+\section{Species recognition}
+
+A discussion of the problem, the general idea of converting a
+problem that needs specialists' knowledge to a problem that can
+solved by laymen. 
+
+\subsection{A cluster based approach to fish recognition}
+input from the ICPR paper
+
+\subsection{Expert, non-expert, and automatic method}
+%
+Crowd-sourcing has shown to provide effective solutions to many
+labeling tasks.  However, tasks in specialist domains are difficult to map to
+Human Intelligence Tasks (or HITs) that can be solved adequately by "the
+crowd". The question addressed in this paper is whether these specialist tasks
+can be cast in such a way, that accurate results can still be obtained through
+crowd-sourcing.
+%
+We study a case where the goal is to identify fish species in images extracted
+from videos taken by underwater cameras, a task that typically requires
+profound domain knowledge in marine biology and hence would be difficult, if
+not impossible, for the crowd. 
+%
+We show that by carefully converting the recognition task to a visual
+similarity comparison task, the crowd achieves agreement with the experts
+comparable to the agreement achieved among experts.  Further, non-expert users
+can learn and improve their performance during the labeling process, e.g., from
+the system feedback.
