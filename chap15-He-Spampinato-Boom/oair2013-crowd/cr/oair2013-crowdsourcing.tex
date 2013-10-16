@@ -1,0 +1,164 @@
+\documentclass{sig-alternate}
+
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{
+         %bookmarks=true%
+        ,bookmarksnumbered=true%
+        ,hypertexnames=false%
+        ,breaklinks=true%
+        ,colorlinks=true%
+        ,linkcolor=darkblue
+        ,urlcolor=darkblue
+        ,anchorcolor=darkblue
+        ,citecolor=darkblue,
+  pdfauthor = {},
+  pdftitle = {},
+  pdfsubject = {},
+  pdfkeywords = {},
+  pdfcreator = {LaTeX with hyperref package},
+  pdfproducer = {pdflatex}
+}
+
+\usepackage{booktabs} 
+\usepackage{subfigure}
+\usepackage{url,graphicx,times}
+\usepackage{tabularx,amsmath}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage[square,comma,numbers,sort&compress,sectionbib]{natbib}
+\usepackage{color}
+ \usepackage{eufrak}
+
+\newcommand{\todo}[1]{\textcolor{red}{[Todo: #1]}}
+\newcommand{\commVera}[1]{\textcolor{magenta}{[Vera: #1]}}
+\newcommand{\enkelop}{$^{\vartriangle}$}
+\newcommand{\dubbelop}{$^{\blacktriangle}$}
+\newcommand{\enkelneer}{$^{\triangledown}$}
+\newcommand{\dubbelneer}{$^{\blacktriangledown}$}
+\newcommand{\newblock}{}
+
+
+%compress tricks
+\newcommand{\bigshrink}{\vspace*{-\baselineskip}}
+\newcommand{\miniskip}{\vspace*{-.6\baselineskip}}
+\newcommand{\shrink}{\vspace*{-.2\baselineskip}}
+\newcommand{\myparagraph}[1]{\smallskip\noindent\emph{#1}.~~}
+%\renewcommand{\paragraph}{\myparagraph}
+\newcommand{\negskip}{\vspace*{-.15\baselineskip}}
+\newcommand{\tableminskip}{\vspace*{-.75\baselineskip}}
+
+\begin{document}
+
+\conferenceinfo{OAIR'13,} {May 22-24, 2013, Lisbon, Portugal.} 
+\CopyrightYear{2013} 
+\crdata{CID 978-2-905450-09-8} 
+\clubpenalty=10000 
+\widowpenalty = 10000
+
+
+\title{Do you need experts in the crowd? A case study in image annotation for marine biology}
+%\subtitle{}
+\numberofauthors{3}
+
+%\let\anonymous=1
+\newif\ifanon
+\ifx\anonymous\undefined
+  \anonfalse
+\else
+  \anontrue
+\fi
+
+\ifanon
+\author{}
+\else
+%\numberofauthors{}
+\author{
+\alignauthor Jiyin He\\
+%       \affaddr{Centrum Wiskunde en Informatica}\\
+%       \affaddr{Science Park 123, 1098XG}\\
+%       \affaddr{Amsterdam, the Netherlands}\\
+%       \email{J.He@cwi.nl}\\
+%%
+\alignauthor Jacco van Ossenbruggen\\
+%       \affaddr{Centrum Wiskunde en Informatica}\\
+%       \affaddr{Science Park 123, 1098XG}\\
+%       \affaddr{Amsterdam, the Netherlands}\\
+ %      \email{jacco.van.ossenbruggen@cwi.nl}\\
+%%
+\alignauthor Arjen P. de Vries\\
+%       \affaddr{Centrum Wiskunde en Informatica}\\
+%       \affaddr{Science Park 123, 1098XG}\\
+%       \affaddr{Amsterdam, the Netherlands}\\
+%      \email{arjen@acm.org}\\
+\and
+   \email{\{j.he, jacco.van.ossenbruggen, arjen.de.vries\}@cwi.nl}
+\and   
+   \affaddr{Centrum Wiskunde en Informatica, Science Park 123}\\
+   \affaddr{1098XG, Amsterdam, the Netherlands}\\
+}
+\fi
+
+
+\maketitle
+
+\begin{abstract}
+Labeled data is a prerequisite for successfully applying machine learning
+techniques to a wide range of problems.
+%
+Recently, crowd-sourcing has shown to provide effective solutions to many
+labeling tasks.  However, tasks in specialist domains are difficult to map to
+Human Intelligence Tasks (or HITs) that can be solved adequately by "the
+crowd". The question addressed in this paper is whether these specialist tasks
+can be cast in such a way, that accurate results can still be obtained through
+crowd-sourcing.
+%
+We study a case where the goal is to identify fish species in images extracted
+from videos taken by underwater cameras, a task that typically requires
+profound domain knowledge in marine biology and hence would be difficult, if
+not impossible, for the crowd. 
+%
+We show that by carefully converting the recognition task to a visual
+similarity comparison task, the crowd achieves agreement with the experts
+comparable to the agreement achieved among experts.  Further, non-expert users
+can learn and improve their performance during the labeling process, e.g., from
+the system feedback. %from the system feedback on their annotations. 
+
+\end{abstract}
+
+
+%\miniskip
+%\category{H.3}{Information Storage and Retrieval}{H.3.1 Content Analysis and Indexing; H.3.3 Information Search and Retrieval} 
+%\category{H.4}{Infor\-mation Systems Applications}{H.4.2 Types of Systems; H.4.m Miscellaneous}
+\category{}{Human computer interaction (HCI)}{User studies; Laboratory experiments}
+
+%\miniskip
+%\terms{Experimentation, Human Factors}
+
+%\miniskip
+\keywords{Image labeling, Crowdsourcing, User studies}
+
+%\miniskip
+\input{oair2013-crowdsourcing-01} % intro
+%\input{oair2013-crowdsourcing-02} % background 
+\input{oair2013-crowdsourcing-03} % a case study
+\input{oair2013-crowdsourcing-04} % a case study
+\input{oair2013-crowdsourcing-05} % evaluation 
+\input{oair2013-crowdsourcing-06} % results and discussion 
+\input{oair2013-crowdsourcing-07} % conclusion 
+
+\ifanon
+\else
+%\miniskip
+\section*{Acknowledgements}
+This research was funded by European Commission FP7 grant 257024, in the Fish4Knowledge project (www.fish4knowledge.eu).
+\fi
+
+\renewcommand{\bibsection}{\section{\mbox{References}}}
+\setlength{\bibsep}{1pt}
+\bibliographystyle{abbrvnat}
+%\footnotesize
+\bibliography{oair2013-crowdsourcing}
+
+\end{document}
+

@@ -1,0 +1,60 @@
+\section{Conclusion}
+\label{sec:con}
+We converted an image labeling task that requires extensive domain knowledge into an 
+image matching game that is based on visual similarity comparison only.        
+%and automatic feedback only. (automatic feedback is feedback without ground truth.)
+%To be able to study the performance of players independently from the method used to select the 
+%candidate labels,  we only used images already labeled by experts. 
+%We first studied the performance of the players under the condition that the correct labels 
+%(according to the experts) were always presented among the candidate labels. 
+%
+%The result 
+When the correct labels are always presented among the candidate labels, 
+non-experts can play this game rather well: 
+domain experts agree as often with the aggregated game labels as they agree with each other's labels. 
+Users learn while playing to the extent that they perform better not only when they later see the same image again, 
+but also when they later see different images from the same species.
+%
+When the game is played under the more realistic condition that the correct label is not always presented, 
+performance of novice users drops, but players that had played the 
+game before still performed as good as under the ideal condition. 
+Also under this condition, players still learned in terms of memorization and generalization.
+%We confirmed that by converting a recognition problem to a visual similarity comparison problem, 
+%non-experts can perform certain recognition tasks in specialists' domain without any domain knowledge.
+
+%Now let us go back to the question we set out to address -- Do you need an expert in the crowd? 
+%Based on what we have learnt in this study, the answer is mixed. 
+%We see that the non-experts \emph{can} replace the experts to some extent if they have been trained
+%with experts' feedback for sufficient time. 
+
+
+A number of directions are left to be explored in the future. 
+%
+We used feedback from the experts, while in 
+practice, the game will rely on automatic feedback or peer-agreement.
+The influence of feedback quality on users' performance and learning behavior
+is yet to be studied. 
+%
+%Further, in this study we addressed the question ``Can users learn?",  without further investigating how they learn
+%and what makes them learn. 
+%
+Similarly, components within our labeling system such as the selection of candidates 
+in practice will have to rely on automatic methods. While our user study have provided insights
+into how these components influence user performance, it remains unexplored how these should be integrated
+as a full fledged interactive system. 
+%
+Finally, we need to investigate how our approach can be extended to other domains such as medical image annotation. 
+
+
+%Unfortunately, disagreement among players on a specific image leads to more unreliable data, even in the best performing aggregation method that we used. Having more players judge such images does not change this (? is this true ?). Picking an good aggregation method is important: in our case, the normalized voting method made the aggregated results worse than picking a single random judgement for each image.
+
+%We also found that disagreement among experts is not correlated to disagreement among players. 
+%In cases where experts disagree, but players show high agreement, this does not necessarily mean 
+%that players agree on the correct answer. Again, in a real world setting with unlabeled images, 
+%these cases are hard to detect automatically.
+
+%The limitation of the study.
+
+%\todo{What do we learn? 1) aggregation methods matter. 2) K - it's an ideal case, it matters. 3) entropy of the labels can imply the difficulty of the images.
+%4) things difficult for experts also difficult for users?}
+
